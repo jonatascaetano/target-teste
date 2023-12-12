@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_state.dart';
-import 'package:teste_tecnico_target/presentation/pages/mobx_pages/data_capture_screen_mobx.dart';
+import 'package:teste_tecnico_target/route/route_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../injection/dependency_injection.dart';
@@ -125,15 +125,8 @@ class RegistrationScreen extends StatelessWidget {
                             await _validateAndRegister(context, authStore);
 
                             if (authStore.state is AuthAuthenticatedState) {
-                              // ignore: use_build_context_synchronously
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const DataCaptureScreen(),
-                                ),
-                                (route) => false,
-                              );
+                              RouteManager.navigateToAndRemoveUntil(
+                                  RouteName.dataCaptureScreenMobx);
                             } else if (authStore.state is AuthErrorState) {
                               final e = authStore.state as AuthErrorState;
                               // ignore: use_build_context_synchronously

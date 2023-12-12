@@ -34,7 +34,7 @@ abstract class _AuthStoreBase with Store {
     var result =
         await _authUseCase.login(userController.text, passwordController.text);
     result.fold((l) {
-      state = const AuthErrorState("Erro ao realizar login");
+      state = const AuthErrorState("Usuário ou senha inválidos");
     }, (r) {
       bool isAuthenticated = r;
       if (isAuthenticated) {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teste_tecnico_target/presentation/pages/cubit_pages/data_capture_screen.dart';
-import 'package:teste_tecnico_target/presentation/pages/cubit_pages/registration_screen.dart';
+import 'package:teste_tecnico_target/route/route_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/entities/user_entity.dart';
@@ -9,8 +8,8 @@ import '../../../injection/dependency_injection.dart';
 import '../../blocs/auth_cubit.dart';
 import '../../blocs/auth_state.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class LoginScreenCubit extends StatelessWidget {
+  const LoginScreenCubit({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +55,8 @@ class _LoginScreenContentState extends State<LoginScreenContent> {
             child: BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
                 if (state is AuthAuthenticatedState) {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const DataCaptureScreen()),
-                    (route) => false,
-                  );
+                  RouteManager.navigateToAndRemoveUntil(
+                      RouteName.dataCaptureScreenCubit);
                 }
 
                 if (state is AuthErrorState) {
@@ -239,6 +235,5 @@ Future<void> _openPrivacyPolicy() async {
 }
 
 void _navigateToRegistrationPage({required BuildContext context}) {
-  Navigator.push(context,
-      MaterialPageRoute(builder: (context) => const RegistrationScreen()));
+  RouteManager.navigateTo(RouteName.registerCubit);
 }

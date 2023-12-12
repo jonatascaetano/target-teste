@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:teste_tecnico_target/route/route_manager.dart';
 
 import 'injection/dependency_injection.dart';
-import 'presentation/pages/mobx_pages/login_screen_mobx.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      navigatorKey: RouteManager.navigatorKey,
+      initialRoute: RouteManager.getRouteName(RouteName.logginMobx),
+      onGenerateRoute: RouteManager.generateRoute,
     );
   }
 }

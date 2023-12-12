@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_state.dart';
-import 'package:teste_tecnico_target/presentation/pages/mobx_pages/data_capture_screen_mobx.dart';
-import 'package:teste_tecnico_target/presentation/pages/mobx_pages/registration_screen_mobx.dart';
+import 'package:teste_tecnico_target/route/route_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../injection/dependency_injection.dart';
@@ -25,11 +24,8 @@ class LoginScreen extends StatelessWidget {
           switch (authStore.state.runtimeType) {
             case AuthAuthenticatedState:
               WidgetsBinding.instance.addPostFrameCallback((_) {
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (context) => const DataCaptureScreen()),
-                  (route) => false,
-                );
+                RouteManager.navigateToAndRemoveUntil(
+                    RouteName.dataCaptureScreenMobx);
               });
 
               return Container();
@@ -224,10 +220,7 @@ class LoginScreen extends StatelessWidget {
 
   void _navigateToRegistrationPage({required BuildContext context}) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const RegistrationScreen()),
-      );
+      RouteManager.navigateTo(RouteName.registerMobx);
     });
   }
 }

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teste_tecnico_target/presentation/pages/cubit_pages/login_screen.dart';
+import 'package:teste_tecnico_target/route/route_manager.dart';
 
 import '../../../injection/dependency_injection.dart';
 import '../../ViewModels/user_viewmodel.dart.dart';
 import '../../blocs/auth_cubit.dart';
 import '../../blocs/data_capture_cubit.dart';
 import '../../blocs/data_capture_state.dart';
-import '../edite_data_screen.dart';
 
-class DataCaptureScreen extends StatelessWidget {
-  const DataCaptureScreen({Key? key}) : super(key: key);
+class DataCaptureScreenCubit extends StatelessWidget {
+  const DataCaptureScreenCubit({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +33,7 @@ class _DataCaptureScreenContent extends StatelessWidget {
             icon: const Icon(Icons.logout),
             onPressed: () async {
               getIt<AuthCubit>().logout();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LoginScreen(),
-                ),
-              );
+              RouteManager.navigateTo(RouteName.logginCubit);
             },
           ),
         ],
@@ -183,12 +177,8 @@ class _DataCaptureScreenBodyState extends State<DataCaptureScreenBody> {
 }
 
 Future<void> _editData(BuildContext context, String data) async {
-  await Navigator.push<String>(
-    context,
-    MaterialPageRoute(
-      builder: (context) => EditDataScreen(initialData: data),
-    ),
-  ).then((value) {
+  await RouteManager.navigateTo(RouteName.editedataScreen, arguments: data)
+      .then((value) {
     if (value != null) {
       context.read<DataCaptureCubit>().editData(data, value);
     }

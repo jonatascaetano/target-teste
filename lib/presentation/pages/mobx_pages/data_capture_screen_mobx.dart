@@ -4,9 +4,8 @@ import 'package:teste_tecnico_target/injection/dependency_injection.dart';
 import 'package:teste_tecnico_target/presentation/ViewModels/user_viewmodel.dart.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_cubit.dart';
 import 'package:teste_tecnico_target/presentation/blocs/data_capture_state.dart';
-import 'package:teste_tecnico_target/presentation/pages/edite_data_screen.dart';
-import 'package:teste_tecnico_target/presentation/pages/mobx_pages/login_screen_mobx.dart';
 import 'package:teste_tecnico_target/presentation/stores/data_capture_store.dart';
+import 'package:teste_tecnico_target/route/route_manager.dart';
 
 class DataCaptureScreen extends StatelessWidget {
   const DataCaptureScreen({Key? key}) : super(key: key);
@@ -31,12 +30,7 @@ class _DataCaptureScreenContent extends StatelessWidget {
             icon: const Icon(Icons.logout),
             onPressed: () async {
               getIt<AuthCubit>().logout();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LoginScreen(),
-                ),
-              );
+              RouteManager.navigateToAndRemoveUntil(RouteName.logginMobx);
             },
           ),
         ],
@@ -172,12 +166,8 @@ class _DataCaptureScreenContent extends StatelessWidget {
     String data,
     DataCaptureStore dataCaptureStore,
   ) async {
-    await Navigator.push<String>(
-      context,
-      MaterialPageRoute(
-        builder: (context) => EditDataScreen(initialData: data),
-      ),
-    ).then((value) {
+    await RouteManager.navigateTo(RouteName.editedataScreen, arguments: data)
+        .then((value) {
       if (value != null) {
         dataCaptureStore.editData(data, value);
       }

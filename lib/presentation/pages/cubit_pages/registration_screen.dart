@@ -4,11 +4,11 @@ import 'package:teste_tecnico_target/domain/entities/user_entity.dart';
 import 'package:teste_tecnico_target/injection/dependency_injection.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_cubit.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_state.dart';
-import 'package:teste_tecnico_target/presentation/pages/cubit_pages/data_capture_screen.dart';
+import 'package:teste_tecnico_target/route/route_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class RegistrationScreen extends StatelessWidget {
-  const RegistrationScreen({Key? key}) : super(key: key);
+class RegistrationScreenCubit extends StatelessWidget {
+  const RegistrationScreenCubit({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -55,11 +55,8 @@ class _RegistrationScreenContentState extends State<RegistrationScreenContent> {
             child: BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
                 if (state is AuthAuthenticatedState) {
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                        builder: (context) => const DataCaptureScreen()),
-                    (route) => false,
-                  );
+                  RouteManager.navigateToAndRemoveUntil(
+                      RouteName.dataCaptureScreenCubit);
                 }
                 if (state is AuthErrorState) {
                   ScaffoldMessenger.of(context).showSnackBar(
