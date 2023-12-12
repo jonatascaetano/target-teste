@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:teste_tecnico_target/domain/entities/user_entity.dart';
-import 'package:teste_tecnico_target/injection/dependency_injection.dart';
+import 'package:teste_tecnico_target/core/injection/dependency_injection.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_cubit.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_state.dart';
-import 'package:teste_tecnico_target/route/route_manager.dart';
+import 'package:teste_tecnico_target/presentation/route/route_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RegistrationScreenCubit extends StatelessWidget {

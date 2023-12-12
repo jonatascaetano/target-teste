@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:teste_tecnico_target/route/route_manager.dart';
+import 'package:teste_tecnico_target/presentation/route/route_manager.dart';
 
-import 'injection/dependency_injection.dart';
+import 'core/injection/dependency_injection.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

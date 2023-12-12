@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_state.dart';
-import 'package:teste_tecnico_target/route/route_manager.dart';
+import 'package:teste_tecnico_target/presentation/route/route_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../injection/dependency_injection.dart';
+import '../../../core/injection/dependency_injection.dart';
 import '../../stores/auth_store.dart';
 
 class LoginScreen extends StatelessWidget {

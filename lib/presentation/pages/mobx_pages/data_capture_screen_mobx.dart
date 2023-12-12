@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:teste_tecnico_target/injection/dependency_injection.dart';
+import 'package:teste_tecnico_target/core/injection/dependency_injection.dart';
 import 'package:teste_tecnico_target/presentation/ViewModels/user_viewmodel.dart.dart';
 import 'package:teste_tecnico_target/presentation/blocs/auth_cubit.dart';
 import 'package:teste_tecnico_target/presentation/blocs/data_capture_state.dart';
 import 'package:teste_tecnico_target/presentation/stores/data_capture_store.dart';
-import 'package:teste_tecnico_target/route/route_manager.dart';
+import 'package:teste_tecnico_target/presentation/route/route_manager.dart';
 
 class DataCaptureScreen extends StatelessWidget {
   const DataCaptureScreen({Key? key}) : super(key: key);

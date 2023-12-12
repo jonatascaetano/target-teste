@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teste_tecnico_target/route/route_manager.dart';
+import 'package:teste_tecnico_target/presentation/route/route_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/entities/user_entity.dart';
-import '../../../injection/dependency_injection.dart';
+import '../../../core/injection/dependency_injection.dart';
 import '../../blocs/auth_cubit.dart';
 import '../../blocs/auth_state.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:teste_tecnico_target/route/route_manager.dart';
+import 'package:teste_tecnico_target/presentation/route/route_manager.dart';
 
-import '../../../injection/dependency_injection.dart';
+import '../../../core/injection/dependency_injection.dart';
 import '../../ViewModels/user_viewmodel.dart.dart';
 import '../../blocs/auth_cubit.dart';
 import '../../blocs/data_capture_cubit.dart';
